@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zadanie z JavaScript</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 class="title">JavaScript tworzenie klas</h1>
+    <div class="basic">
+    <div>
+      <section>
+      <h2>Opis zadania</h2>
+      <p>
+        Utwórz klasę StringBuilder(baseString) i dodaj do niej następujące
+        funkcje:
+      </p>
+      <ul>
+        <li>Wartość domyślna dla parametru baseString to pusty wiersz.</li>
+        <li>
+          Egzemplarz będzie miał właściwość value, w którą wpisuje się wartość
+          parametru baseString.
+        </li>
+        <li>
+          Metoda append(str) - dostaje parametr str (wiersza) i dodaje ją na
+          koniec właściwości value.
+        </li>
+        <li>
+          Metoda prepend(str) - dostaje parametr str (wiersza) i dodaje ją na
+          początek właściwości value.
+        </li>
+        <li>
+          Metoda pad(str) - dostaje parametr str (wiersza) i dodaje ją na
+          początek i na koniec właściwości value.
+        </li>
+      </ul>
+      <p>Ten kod powinien być wykonany bezbłędnie.</p>
+    </section>
+    <section class="console-section">
+      <h2>Wynik kodu: </h2>
+      <p class="console-log">Kod utworzy nową instancję klasy StringBuilder, na której wykonane zostaną operacje dopisania, poprzedzenia i okalania łańcuchów. Ostateczny wynik to: "=^.^=".</p>
+    </section>
+    </div>
+    <section id="solution">
+      <h2>Rozwiązanie</h2>
+      <pre>
+<code>
+const consoleLogElement = document.querySelector(".console-log");
+
+class StringBuilder {
+  constructor(baseString = "") {
+    this.value = baseString;
+  }
+
+  append(str) {
+    this.value += str;
+    return this;
+  }
+
+  prepend(str) {
+    this.value = str + this.value;
+    return this;
+  }
+
+  pad(str) {
+    this.value = str + this.value + str;
+    return this;
+  }
+}
+
+const builder = new StringBuilder(".");
+builder.append("^").prepend("^").pad("=");
+
+console.log(builder.value);
+consoleLogElement.innerHTML = `&nbsp;${builder.value}`;
+
+</code>
+</pre>
+</div>
+    </section>
+
+    <section>
+      <h2>Opis</h2>
+      <h3>Klasy JavaScript</h3>
+      <p>
+
+Klasy JavaScript, które zostały wprowadzone w 2015 roku wraz z wersją ES6, reprezentują nowoczesny sposób tworzenia obiektów. Jest to tzw. "syntactic sugar", co oznacza, że oferuje bardziej przejrzystą i intuicyjną składnię dla tworzenia obiektów, w porównaniu do tradycyjnych metod, które korzystały z konstruktorów o mniej przyjaznej składni.
+      </p>
+<h3> Konstruktor</h3>
+        <p>Na wstępie stworzono 'konstruktor', który jest funkcją aktywowaną podczas kreowania nowego obiektu. Funkcja ta definiuje atrybuty obiektu, które są dostępne dla każdej instancji klasy. W tym konkretnym przypadku, mamy do czynienia z atrybutem 'value', który przechowuje wartość parametru 'baseString'.</p>
+<h3>Metody</h3>
+<p>Metody klasy są zdefiniowane wewnątrz definicji klasy, ale poza konstruktorem, co umożliwia ich dostępność dla każdego egzemplarza tej klasy. W obrębie metod, możemy odwoływać się do atrybutów obiektu za pomocą słowa kluczowego 'this', które wskazuje na specyficzną instancję utworzoną przez klasę. Ważne jest, aby metoda zwracała wartość na koniec swojego działania, co umożliwia użycie metod łańcuchowo (chaining) podczas tworzenia obiektu (np. builder.append('a').prepend('b').pad('c')). Innymi słowy, brak zwracania wartości przez metodę prowadziłby do sytuacji, w której sekwencja metod nie wpływałaby na ten sam obiekt, ale tworzyłaby nowe, niepowiązane ze sobą obiekty.</p>
+<h3>Wykorzystanie</h3>
+<p>W końcowym etapie zastosowano utworzoną klasę. Nowa instancja klasy 'StringBuilder', zainicjalizowana wartością ".", została przypisana do zmiennej o nazwie 'builder'. Następnie, na tej zmiennej wywołano metody w łańcuchu. Każda z tych metod spełniała kolejne wymagania opisane w treści zadania. </p>
+    </section>
+    <section>
+      <h2>Przydatne</h2>
+<ul>
+  <li>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">Dokumentacja MDN na temat klas w JavaScript</a>
+  </li>
+  <li>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">Dokumentacja MDN na temat this</a>
+  </li>
+  <li>
+    <a href="https://www.freecodecamp.org/news/write-less-do-more-with-javascript-es6-5fd4a8e50ee2/">Krótki opis ES6</a>
+  </li>
+</ul>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

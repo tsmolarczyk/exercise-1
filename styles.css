@@ -39,6 +39,7 @@ code {
 .basic {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
 }
 
 #solution {
@@ -86,4 +87,14 @@ a {
 a:hover {
   color: #590015;
   text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+  .basic {
+    flex-direction: column;
+  }
+
+  #solution {
+    padding: 0;
+  }
 }
